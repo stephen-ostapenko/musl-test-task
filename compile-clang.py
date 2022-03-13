@@ -85,14 +85,13 @@ def build_versions(first, last, thread_count):
 		end = time.time()
 
 		write_latest_version_to_file(version)
-		print(f"\n\n\tVersion {version} was created in {end - start} s\n\n")
+		print(f"\n\n\tVersion {version} was built in {end - start} s\n\n")
 
 if __name__ == "__main__":
 	args = get_args()
 	thread_count = args.threads
 	bootstrap_count = args.steps
 	add_bootstrap_count = args.add
-	print(bootstrap_count, thread_count, add_bootstrap_count)
 
 	# Downloading sources from github
 	if (not os.path.exists(LLVM_PROJECT_PATH)):
@@ -103,10 +102,10 @@ if __name__ == "__main__":
 	subprocess.check_call(f"git checkout {ACTUAL_GIT_BRANCH}", shell = True)
 
 	if (add_bootstrap_count == None):
-		print(f"\nBuilding {bootstrap_count} generations of clang from scratch\n")
+		print(f"\nBuilding {bootstrap_count} generation(s) of clang from scratch\n")
 		build_from_scratch(thread_count, bootstrap_count)
 	else:
-		print(f"\nBuilding additional {add_bootstrap_count} generations of clang\n")
+		print(f"\nBuilding {add_bootstrap_count} additional generation(s) of clang\n")
 		build_with_addition(thread_count, add_bootstrap_count)
 
 	print("\n\ndone!")

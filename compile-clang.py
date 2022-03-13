@@ -37,6 +37,7 @@ def write_latest_version_to_file(version):
 	out.close()
 
 LLVM_PROJECT_PATH = "llvm-project"
+ACTUAL_GIT_BRANCH = "release/13.x"
 
 args = get_args()
 bootstrap_count = args.steps
@@ -54,6 +55,8 @@ if (os.path.exists(LATEST_VERSION_FILE_NAME)):
 list_of_build_dirs = glob.glob("build-v*")
 for d in list_of_build_dirs:
 	shutil.rmtree(d)
+
+subprocess.check_call(f"git checkout {ACTUAL_GIT_BRANCH}", shell = True)
 
 # First compilation
 start = time.time()

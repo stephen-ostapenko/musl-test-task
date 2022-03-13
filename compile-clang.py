@@ -56,7 +56,6 @@ for d in list_of_build_dirs:
 	shutil.rmtree(d)
 
 # First compilation
-exit(0)
 start = time.time()
 
 subprocess.check_call(get_cmake_prompt(1), shell = True)
@@ -66,13 +65,13 @@ subprocess.check_call(f"make clang -j {thread_count}", shell = True)
 os.chdir("..")
 
 end = time.time()
-print(f"Version 1 created in {end - start} s")
+print(f"\n\n\tVersion 1 created in {end - start} s\n\n")
 
 # Further compilations
 for version in range(2, bootstrap_count + 1):
 	start = time.time()
 
-	compiler_path = f"build-v{version - 1}/bin"
+	compiler_path = f"{os.getcwd()}/build-v{version - 1}/bin/"
 	subprocess.check_call(get_cmake_prompt_with_compilers(version, compiler_path + "clang", compiler_path + "clang++"), shell = True)
 
 	os.chdir(f"build-v{version}")
@@ -80,4 +79,4 @@ for version in range(2, bootstrap_count + 1):
 	os.chdir("..")
 
 	end = time.time()
-	print(f"Version {version} created in {end - start} s")
+	print(f"\n\n\tVersion {version} created in {end - start} s\n\n")

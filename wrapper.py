@@ -87,6 +87,4 @@ if __name__ == "__main__":
 					  f"args[0] += \"-executable-file\"" "\n"
 					  f"os.system(\" \".join(args))" "\n")
 
-	output_path = os.path.dirname(os.path.abspath(output_file_name))
-	os.chdir(output_path)
-	write_script(wrapper_script, output_file_name)
+	write_script(wrapper_script, os.path.abspath(output_file_name))

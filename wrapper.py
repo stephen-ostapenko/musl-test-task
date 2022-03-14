@@ -8,6 +8,7 @@ import datetime
 # Folder with LLVM project
 LLVM_PROJECT_PATH = "llvm-project"
 
+# Finding output file ("-o" option) in list of arguments
 def find_output_file():
 	args = sys.argv
 	occ = args.count("-o")
@@ -37,6 +38,7 @@ def get_latest_version_from_file():
 	fin.close()
 	return version
 
+# Writing executable script to file
 def write_script(script, output_file_name):
 	fout = open(output_file_name, "w")
 	fout.write(script)
@@ -49,6 +51,7 @@ if __name__ == "__main__":
 	cur_path = os.getcwd()
 	script_path = os.path.dirname(args[0])
 
+	# Trying to find the latest available version of clang
 	latest_version = 0
 	os.chdir(script_path)
 	if (os.path.exists(LLVM_PROJECT_PATH)):
@@ -56,6 +59,7 @@ if __name__ == "__main__":
 		latest_version = get_latest_version_from_file()
 		os.chdir("..")
 
+	# If there is no clang available, it has to be compiled
 	if (latest_version == 0):
 		subprocess.check_call("./compile-clang.py", shell = True)
 
@@ -64,6 +68,7 @@ if __name__ == "__main__":
 		latest_version = 1
 		os.chdir("..")
 
+	# Modifying arguments to create executable
 	of = find_output_file()
 	output_file_name = args[of]
 	args[of] += "-executable-file"
@@ -72,6 +77,8 @@ if __name__ == "__main__":
 
 	os.chdir(cur_path)
 	time = datetime.datetime.now()
+
+	# Compiling
 	subprocess.check_call(args)
 
 	wrapper_script = (f"#!/usr/bin/python3" "\n"

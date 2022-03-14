@@ -13,11 +13,11 @@ ACTUAL_GIT_BRANCH = "release/13.x"
 
 def get_args():
 	parser = argparse.ArgumentParser(description = "Script to compile clang from sources.")
-	parser.add_argument("-j", "--threads", type = int, default = 1, help = "Number of threads to work with (default: 1).")
+	parser.add_argument("-j", "--threads", type = int, default = 1, help = "number of threads to work with (default: 1)")
 
 	group = parser.add_mutually_exclusive_group()
-	group.add_argument("-n", "--steps", type = int, default = 1, help = "Initial bootstrap steps count (default: 1).")
-	group.add_argument("-a", "--add", type = int, help = "Additional bootstrap steps count.")
+	group.add_argument("-n", "--steps", type = int, default = 1, help = "initial bootstrap steps count (default: 1)")
+	group.add_argument("-a", "--add", type = int, help = "additional bootstrap steps count")
 
 	return parser.parse_args()
 

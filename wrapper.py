@@ -80,7 +80,7 @@ if __name__ == "__main__":
 	time = datetime.datetime.now()
 
 	# Compiling
-	print(f"Compiling {output_file_name} using clang version from build-v{latest_version}.")
+	print(f"Compiling \"{output_file_name}\" using clang version from build-v{latest_version}.")
 	subprocess.check_call(args)
 
 	wrapper_script = (f"#!/usr/bin/python3" "\n"
@@ -90,7 +90,7 @@ if __name__ == "__main__":
 					  "import sys" "\n"
 					  "import os" "\n"
 					  "\n"
-					  f"print(\"This executable was compiled at {time}.\")" "\n"
+					  f"print(\"This executable was compiled at {time}.\", file = sys.stderr)" "\n"
 					  "\n"
 					  f"args = sys.argv" "\n"
 					  f"args[0] += \"-binary-file{hsh}\"" "\n"

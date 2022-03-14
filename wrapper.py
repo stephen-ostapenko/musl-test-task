@@ -79,6 +79,7 @@ if __name__ == "__main__":
 	time = datetime.datetime.now()
 
 	# Compiling
+	print(f"Compiling {output_file_name} using clang version from build-v{latest_version}.")
 	subprocess.check_call(args)
 
 	wrapper_script = (f"#!/usr/bin/python3" "\n"

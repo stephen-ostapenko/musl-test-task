@@ -12,7 +12,7 @@ LLVM_PROJECT_PATH = "llvm-project"
 ACTUAL_GIT_BRANCH = "release/13.x"
 
 def get_args():
-	parser = argparse.ArgumentParser(description = "Script to compile clang from sources")
+	parser = argparse.ArgumentParser(description = "Script to compile clang from sources.")
 	parser.add_argument("-j", "--threads", type = int, default = 1, help = "Number of threads to work with (default: 1).")
 
 	group = parser.add_mutually_exclusive_group()

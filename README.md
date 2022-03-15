@@ -93,6 +93,8 @@ Version 10 was built in 5528.23906083221 s
 
 Пример компиляции и запуска программы `hw.cpp` с помощью скрипта `wrapper.py`:
 ```c++
+// hw.cpp
+
 #include <iostream>
 
 using namespace std;

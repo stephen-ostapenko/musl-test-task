@@ -96,7 +96,7 @@ def build_versions(from_version, to_version, thread_count):
 		print(f"\n\n\tVersion {version} was built in {end - start} s\n\n")
 
 if __name__ == "__main__":
-	# Parsing arguments
+	# Getting arguments
 	args = get_args()
 	thread_count = args.threads
 	bootstrap_count = args.steps

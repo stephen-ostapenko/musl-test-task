@@ -119,7 +119,8 @@ int main(int argc, char **argv) {
 ```
 ~/Desktop$ ~/src/musl-test-task/wrapper.py hw.cpp -o hw
 Compiling executable "hw" using clang version from build-v10.
-
+```
+```
 ~/Desktop$ cat hw
 #!/usr/bin/python3
 
@@ -134,7 +135,8 @@ print("This executable was compiled at 2022-03-14 15:01:52.439888.", file = sys.
 args = sys.argv
 args[0] += "-binary-file-65c2a3d77127c15d068dec7e00e50649"
 subprocess.Popen(args = args, stdin = sys.stdin, stdout = sys.stdout, stderr = sys.stderr)
-
+```
+```
 ~/Desktop$ cat inf
 sample input file
 1
@@ -142,7 +144,8 @@ sample input file
 3
 4 5 6
 @@@@@@@@
-
+```
+```
 ~/Desktop$ ./hw few sample args 1 2 3 < inf > ouf
 This executable was compiled at 2022-03-14 15:01:52.439888.
 cerr: sample
@@ -155,7 +158,8 @@ cerr: 4
 cerr: 5
 cerr: 6
 cerr: @@@@@@@@
-
+```
+```
 ~/Desktop$ cat ouf
 Hello, World!
 ./hw-binary-file-65c2a3d77127c15d068dec7e00e50649 few sample args 1 2 3 
